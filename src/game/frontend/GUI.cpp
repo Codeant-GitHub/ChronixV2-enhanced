@@ -77,7 +77,7 @@ namespace YimMenu
 			}
 			if (!GUI::IsOnboarding())
 				Toggle();
-			ToggleMouse();
+			ToggleMouse(); 
 		}
 	}
 	
