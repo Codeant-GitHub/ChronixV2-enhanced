@@ -8,6 +8,7 @@
 #include "game/pointers/Pointers.hpp"
 #include "core/backend/FiberPool.hpp"
 #include "game/gta/ScriptFunction.hpp"
+#include "game/gta/Natives.hpp"
 
 namespace YimMenu::Submenus
 {
@@ -16,6 +17,13 @@ namespace YimMenu::Submenus
 		auto misc = std::make_unique<Category>("Misc");
 
 		misc->AddItem(std::make_unique<ImGuiItem>([] {
+			if (ImGui::Button("Network Bail"))
+			{
+				FiberPool::Push([] {
+					NETWORK::NETWORK_BAIL(0, 24, 0);
+				});
+			}
+
 			static int team;
 			ImGui::InputInt("Team", &team);
 			if (ImGui::Button("fm_mission_controller DoTeamSwap"))
