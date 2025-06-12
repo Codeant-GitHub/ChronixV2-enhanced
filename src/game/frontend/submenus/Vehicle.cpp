@@ -1,10 +1,13 @@
+//https://github.com/Codeant-GitHub
+
 #pragma once
 #include "common.hpp"
-
 
 #include "Vehicle.hpp"
 #include "game/frontend/items/Items.hpp"
 #include "game/frontend/submenus/Vehicle/SpawnVehicle.hpp"
+#include "Vehicle/VehicleEditor.hpp"
+#include "Vehicle/SavedVehicles.hpp"
 
 namespace YimMenu::Submenus
 {
@@ -42,5 +45,7 @@ namespace YimMenu::Submenus
 
 		AddCategory(std::move(main));
 		AddCategory(BuildSpawnVehicleMenu());
+		AddCategory(BuildVehicleEditorMenu());
+		AddCategory(BuildSavedVehiclesMenu());
 	}
 }

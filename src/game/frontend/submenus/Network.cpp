@@ -1,3 +1,5 @@
+//https://github.com/Codeant-GitHub
+
 #pragma once
 #include "common.hpp"
 
@@ -15,7 +17,6 @@ namespace YimMenu::Submenus
 #define ICON_FA_ROUTE "\xef\x9b\xbf"
 	    Submenu::Submenu("Network", ICON_FA_ROUTE)
 	{
-		// TODO: this needs a rework
 		auto session = std::make_shared<Category>("Session");
 		auto joinGroup = std::make_shared<Group>("Join");
 		auto bountyGroup = std::make_shared<Group>("Bounty", 1);
