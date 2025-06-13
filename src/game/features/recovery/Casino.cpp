@@ -7,12 +7,45 @@
 #include "game/backend/Self.hpp"
 #include "game/gta/Natives.hpp"
 #include "game/gta/ScriptLocal.hpp"
+#include "game/gta/Stats.hpp"
+#include "core/commands/ListCommand.hpp"
+#include "src/game/backend/Tunables.hpp"
 
 #include <set>
 
 
 namespace YimMenu::Features
 {
+	class BypassCasinoBans : public LoopedCommand
+	{
+		using LoopedCommand::LoopedCommand;
+
+		virtual void OnTick() override
+		{
+			static Tunable addSpins("VC_LUCKY_WHEEL_ADDITIONAL_SPINS_ENABLE"_J);
+			static Tunable spinsPerDay("VC_LUCKY_WHEEL_NUM_SPINS_PER_DAY"_J);
+
+			// Bypass Casino Slots and Tables Ban/Cooldown
+			Stats::SetInt("MPPLY_CASINO_CHIPS_WON_GD", 0);
+			Stats::SetInt("MPPLY_CASINO_CHIPS_WONTIM", 0);
+			Stats::SetInt("MPPLY_CASINO_GMBLNG_GD", 0);
+			Stats::SetInt("MPPLY_CASINO_BAN_TIME", 0);
+			Stats::SetInt("MPPLY_CASINO_CHIPS_PURTIM", 0);
+			Stats::SetInt("MPPLY_CASINO_CHIPS_PUR_GD", 0);
+			Stats::SetInt("MPPLY_CASINO_CHIPS_SOLD", 0);
+			Stats::SetInt("MPPLY_CASINO_CHIPS_SELTIM", 0);
+
+			if (addSpins.IsReady() && spinsPerDay.IsReady())
+			{
+				addSpins.Set(1);
+				spinsPerDay.Set(99);
+			}
+		}
+		virtual void OnDisable() override
+		{
+			// This may need some values, but will work as is for now.
+		}
+	};
 	class CasinoManipulateRigSlotMachines : public LoopedCommand
 	{
 		using LoopedCommand::LoopedCommand;
@@ -82,7 +115,86 @@ namespace YimMenu::Features
 			}
 		}
 	};
+	enum class eLuckyWheelPrize
+	{
+		PODIUM_VEHICLE = 18,
+		MYSTERY = 11,
+		CASH = 19,
+		CHIPS = 15,
+		RP = 17,
+		DISCOUNT = 4,
+		CLOTHING = 8
+	};
 
+	static std::vector<std::pair<int, const char*>> luckyWheelPrizes = {
+		{static_cast<int>(eLuckyWheelPrize::PODIUM_VEHICLE), "Podium Vehicle"},
+		{static_cast<int>(eLuckyWheelPrize::MYSTERY), "Mystery Prize"},
+		{static_cast<int>(eLuckyWheelPrize::CASH), "$50,000 Cash"},
+		{static_cast<int>(eLuckyWheelPrize::CHIPS), "25,000 Chips"},
+		{static_cast<int>(eLuckyWheelPrize::RP), "15,000 RP"},
+		{static_cast<int>(eLuckyWheelPrize::DISCOUNT), "Discount"},
+		{static_cast<int>(eLuckyWheelPrize::CLOTHING), "Clothing"}
+	};
+
+	static ListCommand _SelectedLuckyWheelPrize{"luckywheelprize", "Wheel Prize", "Select prize for Lucky Wheel", luckyWheelPrizes, 0};
+
+	class ApplyLuckyWheelPrize : public Command
+	{
+		using Command::Command;
+
+		virtual void OnCall() override
+		{
+			Player host = NETWORK::NETWORK_GET_HOST_OF_SCRIPT("casino_lucky_wheel", -1, 0);
+			if (host.GetId() != Self::GetPlayer().GetId())
+				Scripts::ForceScriptHost(Scripts::FindScriptThread("casino_lucky_wheel"_J));
+
+			constexpr int base = 280;
+			constexpr int prize_offset = base + 14;
+			constexpr int prize_state_offset = base + 45;
+
+			auto prizeLocal = ScriptLocal("casino_lucky_wheel"_J, prize_offset).As<int*>();
+			auto stateLocal = ScriptLocal("casino_lucky_wheel"_J, prize_state_offset).As<int*>();
+
+			int selectedPrize = _SelectedLuckyWheelPrize.GetState();
+
+			// Set prize and trigger win
+			*prizeLocal = selectedPrize;
+			*stateLocal = 11; // state 11 forces it to land on set prize
+		}
+	};
+	
+	class CasinoAutoSpin : public LoopedCommand
+	{
+		using LoopedCommand::LoopedCommand;
+
+		int slot_machine_state_index = 1232; // replace with your actual `slots_slot_machine_state` offset
+		Tunable autoplay_cap{"AUTOPLAY_CAP"_J};
+		Tunable autoplay_chips_cap{"AUTOPLAY_CHIPS_CAP"_J}; // These should map to your menu toggles
+
+		virtual void OnTick() override
+		{
+			if (!SCRIPT::GET_NUMBER_OF_THREADS_RUNNING_THE_SCRIPT_WITH_THIS_HASH("casino_slots"_J))
+				return;
+
+			int slotState = *ScriptLocal("casino_slots"_J, slot_machine_state_index).As<int*>();
+
+			if ((slotState & (1 << 0)) == (1 << 0))
+			{
+				int chips = Stats::GetInt("MPX_CASINO_CHIPS");
+
+				if ((slotState & (1 << 24)) == 0)
+				{
+					slotState |= (1 << 3);
+					*ScriptLocal("casino_slots"_J, slot_machine_state_index).As<int*>() = slotState;
+
+					Sleep(500);
+				}
+			}
+		}
+	};
+
+	static CasinoAutoSpin _CasinoAutoSpin{"casinoautospin", "Auto Spin Slots", "Automatically spins slot machine when seated."};
+	static ApplyLuckyWheelPrize _ApplyLuckyWheelPrize{"applyluckywheelprize", "Set Prize", "Sets the wheel to land on the selected Lucky Wheel prize"};
+	static BypassCasinoBans _BypassCasinoBans{"bypasscasinobans", "Bypass Casino Ban", "Bypasses the Casino Ban and cooldown allowing you to manipulate the machines/tables as much as you want"};
 	static CasinoManipulateRigSlotMachines _CasinoManipulateRigSlotMachines{"casinomanipulaterigslotmachines", "Manipulate Rig Slot Machines", "Lets you win the Rig Slot Machines every time"};
-
 }
