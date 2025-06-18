@@ -497,6 +497,7 @@
     <ClCompile Include="src\game\features\self\InfiniteParachutes.cpp" />
     <ClCompile Include="src\game\features\self\Invis.cpp" />
     <ClCompile Include="src\game\features\self\KeepPlayerClean.cpp" />
+    <ClCompile Include="src\game\features\self\MeleeDamage.cpp" />
     <ClCompile Include="src\game\features\self\MobileRadio.cpp" />
     <ClCompile Include="src\game\features\self\NoIdleKick.cpp" />
     <ClCompile Include="src\game\features\self\NoRagdoll.cpp" />
@@ -513,6 +514,7 @@
     <ClCompile Include="src\game\features\self\SuperRun.cpp" />
     <ClCompile Include="src\game\features\self\UnlimitedOxygen.cpp" />
     <ClCompile Include="src\game\features\self\Wanted.cpp" />
+    <ClCompile Include="src\game\features\self\WeaponDamage.cpp" />
     <ClCompile Include="src\game\features\system\Chat.cpp" />
     <ClCompile Include="src\game\features\system\DespawnBypass.cpp" />
     <ClCompile Include="src\game\features\system\LSCCustomsBypass.cpp" />
@@ -529,6 +531,7 @@
     </ClCompile>
     <ClCompile Include="src\game\features\vehicle\HornBoost.cpp" />
     <ClCompile Include="src\game\features\vehicle\KeepFixed.cpp" />
+    <ClCompile Include="src\game\features\vehicle\LowerVehicleStance.cpp" />
     <ClCompile Include="src\game\features\vehicle\RocketBoost.cpp" />
     <ClCompile Include="src\game\features\vehicle\SavePersonalVehicle.cpp" />
     <ClCompile Include="src\game\features\vehicle\Seatbelt.cpp" />
@@ -563,7 +566,6 @@
     <ClCompile Include="src\game\frontend\items\ConditionalItem.cpp" />
     <ClCompile Include="src\game\frontend\items\FloatCommandItem.cpp" />
     <ClCompile Include="src\game\frontend\items\Group.cpp" />
-    <ClCompile Include="src\game\frontend\items\HotkeySetter.cpp" />
     <ClCompile Include="src\game\frontend\items\ImGuiItem.cpp" />
     <ClCompile Include="src\game\frontend\items\InputTextWithHint.cpp" />
     <ClCompile Include="src\game\frontend\items\IntCommandItem.cpp" />

@@ -1570,6 +1570,9 @@
     <ClCompile Include="src\game\features\self\KeepPlayerClean.cpp">
       <Filter>game\features\self</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\features\self\MeleeDamage.cpp">
+      <Filter>game\features\self</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\features\self\MobileRadio.cpp">
       <Filter>game\features\self</Filter>
     </ClCompile>
@@ -1618,6 +1621,9 @@
     <ClCompile Include="src\game\features\self\Wanted.cpp">
       <Filter>game\features\self</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\features\self\WeaponDamage.cpp">
+      <Filter>game\features\self</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\features\system\Chat.cpp">
       <Filter>game\features\system</Filter>
     </ClCompile>
@@ -1658,6 +1664,9 @@
       <Filter>game\features\vehicle</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\vehicle\KeepFixed.cpp">
+      <Filter>game\features\vehicle</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\features\vehicle\LowerVehicleStance.cpp">
       <Filter>game\features\vehicle</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\vehicle\RocketBoost.cpp">
@@ -1748,9 +1757,6 @@
       <Filter>game\frontend\items</Filter>
     </ClCompile>
     <ClCompile Include="src\game\frontend\items\Group.cpp">
-      <Filter>game\frontend\items</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\frontend\items\HotkeySetter.cpp">
       <Filter>game\frontend\items</Filter>
     </ClCompile>
     <ClCompile Include="src\game\frontend\items\ImGuiItem.cpp">
