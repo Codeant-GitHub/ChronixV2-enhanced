@@ -28,6 +28,9 @@ namespace YimMenu
 
 	void Renderer::DestroyImpl()
 	{
+		if (!m_Initialized)
+			return;
+
 		// TODO: we aren't destroying resources properly
 		ImGui_ImplWin32_Shutdown();
 
@@ -211,6 +214,7 @@ namespace YimMenu
 		ImGui::StyleColorsDark();
 
 		LOG(INFO) << "DirectX 12 renderer has finished initializing.";
+		m_Initialized = true;
 		return true;
 	}
 

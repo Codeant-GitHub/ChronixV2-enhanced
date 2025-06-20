@@ -11,9 +11,9 @@ namespace YimMenu
 	public:
 		~GUI();
 
-		GUI(const GUI&)                = delete;
-		GUI(GUI&&) noexcept            = delete;
-		GUI& operator=(const GUI&)     = delete;
+		GUI(const GUI&) = delete;
+		GUI(GUI&&) noexcept = delete;
+		GUI& operator=(const GUI&) = delete;
 		GUI& operator=(GUI&&) noexcept = delete;
 
 		static void Init()
@@ -31,7 +31,7 @@ namespace YimMenu
 			GetInstance().m_IsOpen ^= true;
 		}
 
-		static bool IsUsingKeyboard() 
+		static bool IsUsingKeyboard()
 		{
 			return ImGui::GetIO().WantTextInput;
 		}

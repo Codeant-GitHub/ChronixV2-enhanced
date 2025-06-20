@@ -13,14 +13,14 @@
 namespace YimMenu::Submenus
 {
 	Self::Self() :
-		#define ICON_FA_USER "\xef\x80\x87" 
+		#define ICON_FA_USER "\xef\x80\x87"
 	    Submenu::Submenu("Self", ICON_FA_USER)
 	{
-		auto main          = std::make_shared<Category>("Main");
-		auto globalsGroup  = std::make_shared<Group>("Globals");
+		auto main = std::make_shared<Category>("Main");
+		auto globalsGroup = std::make_shared<Group>("Globals");
 		auto movementGroup = std::make_shared<Group>("Movement");
-		auto toolsGroup    = std::make_shared<Group>("Tools", 2);
-		auto wantedGroup   = std::make_shared<Group>("Wanted");
+		auto toolsGroup = std::make_shared<Group>("Tools", 2);
+		auto wantedGroup = std::make_shared<Group>("Wanted");
 
 		globalsGroup->AddItem(std::make_shared<BoolCommandItem>("godmode"_J));
 		globalsGroup->AddItem(std::make_shared<BoolCommandItem>("invis"_J));
@@ -50,7 +50,7 @@ namespace YimMenu::Submenus
 		setWanted->AddItem(std::make_shared<BoolCommandItem>("freezewanted"_J));
 		wantedGroup->AddItem(std::make_shared<ConditionalItem>("freezewanted"_J, clearWanted, true));
 		wantedGroup->AddItem(std::make_shared<ConditionalItem>("neverwanted"_J, setWanted, true));
-		
+
 		movementGroup->AddItem(std::make_shared<BoolCommandItem>("standonvehicles"_J));
 		movementGroup->AddItem(std::make_shared<BoolCommandItem>("disableactionmode"_J));
 		movementGroup->AddItem(std::make_shared<BoolCommandItem>("superrun"_J));

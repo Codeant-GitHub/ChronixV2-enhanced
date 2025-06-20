@@ -26,15 +26,19 @@
 #include "game/frontend/GUI.hpp"
 #include "game/pointers/Pointers.hpp"
 #include "game/features/vehicle/SavePersonalVehicle.hpp"
+#include "game/features/self/OpenGunLocker.hpp"
+#include "game/features/recovery/DailyActivities.hpp"
 
 namespace YimMenu
 {
 	DWORD Main(void*)
 	{
-		const auto documents = std::filesystem::path(std::getenv("appdata")) / "ChronixV2";
+		const auto documents = std::filesystem::path(std::getenv("appdata")) / "YimMenuV2";
 		FileMgr::Init(documents);
 
-		LogHelper::Init("ChronixV2", FileMgr::GetProjectFile("./cout.log"));
+		LogHelper::Init("YimMenuV2", FileMgr::GetProjectFile("./cout.log"));
+
+		LOGF(INFO, "Welcome to YimMenuV2! Build date: {} at {}", __DATE__, __TIME__);
 
 		g_HotkeySystem.RegisterCommands();
 		SavedLocations::FetchSavedLocations();
@@ -43,8 +47,13 @@ namespace YimMenu
 		if (!ModuleMgr.LoadModules())
 			goto EARLY_UNLOAD;
 
+		if (ModuleMgr.IsManualMapped())
+			LOGF(WARNING, "Manual mapping detected, switch to normal injection if you're having issues");
+
 		if (!Pointers.Init())
 			goto EARLY_UNLOAD;
+
+		AnticheatBypass::RunOnStartup();
 
 		if (!Renderer::Init())
 			goto EARLY_UNLOAD;
@@ -61,7 +70,7 @@ namespace YimMenu
 		GUI::Init();
 
 		ScriptMgr::AddScript(std::make_unique<Script>(&NativeHooks::RunScript)); // runs once
-		ScriptMgr::AddScript(std::make_unique<Script>(&Tunables::RunScript)); // runs once
+		ScriptMgr::AddScript(std::make_unique<Script>(&Tunables::RunScript));    // runs once
 		ScriptMgr::AddScript(std::make_unique<Script>(&AnticheatBypass::RunScript));
 		ScriptMgr::AddScript(std::make_unique<Script>(&Self::RunScript));
 		ScriptMgr::AddScript(std::make_unique<Script>(&GUI::RunScript));
@@ -69,12 +78,14 @@ namespace YimMenu
 		ScriptMgr::AddScript(std::make_unique<Script>(&HotkeySystem::RunScript));
 		ScriptMgr::AddScript(std::make_unique<Script>(&Commands::RunScript));
 		ScriptMgr::AddScript(std::make_unique<Script>(&Features::SavePersonalVehicle::RunScript));
+		ScriptMgr::AddScript(std::make_unique<Script>(&Features::OpenGunLocker::RunScript));
+		ScriptMgr::AddScript(std::make_unique<Script>(&Features::OpenStreetDealerMenu::RunScript));
 		ScriptMgr::AddScript(std::make_unique<Script>(&SavedPlayers::RunScript));
 
 		if (!Pointers.LateInit())
 			LOG(WARNING) << "Socialclub patterns failed to load";
 
-		Notifications::Show("ChronixV2", "Loaded succesfully", NotificationType::Success);
+		Notifications::Show("YimMenuV2", "Loaded succesfully", NotificationType::Success);
 
 		while (g_Running)
 		{
@@ -89,7 +100,7 @@ namespace YimMenu
 		Hooking::Destroy();
 		CallSiteHook::Destroy();
 
-EARLY_UNLOAD:
+	EARLY_UNLOAD:
 		g_Running = false;
 		Renderer::Destroy();
 		LogHelper::Destroy();
@@ -105,7 +116,8 @@ BOOL WINAPI DllMain(HINSTANCE dllInstance, DWORD reason, void*)
 {
 	using namespace YimMenu;
 
-	DisableThreadLibraryCalls(dllInstance);
+	if (dllInstance)
+		DisableThreadLibraryCalls(dllInstance);
 
 	if (reason == DLL_PROCESS_ATTACH)
 	{
