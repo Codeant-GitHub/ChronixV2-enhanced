@@ -32,6 +32,8 @@
     <LinkIncremental>false</LinkIncremental>
     <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)bin\int\$(ProjectName)\</IntDir>
+    <TargetName>ChronixV2</TargetName>
+    <TargetExt>.dll</TargetExt>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -47,7 +49,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <MinimalRebuild>false</MinimalRebuild>
       <StringPooling>true</StringPooling>
-      <LanguageStandard>stdcpplatest</LanguageStandard>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -55,6 +57,8 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>$(SolutionDir)lib\minhook.x64.lib;$(SolutionDir)lib\AsyncLogger.lib;$(SolutionDir)lib\imgui.lib;$(SolutionDir)lib\fmtlib.lib;dbghelp.lib;d3dcompiler.lib;dwmapi.lib;kernel32.lib;user32.lib;gdi32.lib;winspool.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;comdlg32.lib;advapi32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(SolutionDir)lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ImportLibrary>$(SolutionDir)bin\$(Configuration)\ChronixV2.lib</ImportLibrary>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -143,6 +147,7 @@
     <ClInclude Include="src\game\frontend\Onboarding.hpp" />
     <ClInclude Include="src\game\frontend\Overlay.hpp" />
     <ClInclude Include="src\game\frontend\fonts\Fonts.hpp" />
+    <ClInclude Include="src\game\frontend\items\DrawHotkey.hpp" />
     <ClInclude Include="src\game\frontend\items\Items.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Debug.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Debug\DrawVariable.hpp" />
@@ -498,10 +503,12 @@
     <ClCompile Include="src\game\features\self\InfiniteAmmo.cpp" />
     <ClCompile Include="src\game\features\self\InfiniteClip.cpp" />
     <ClCompile Include="src\game\features\self\InfiniteParachutes.cpp" />
+    <ClCompile Include="src\game\features\self\InfiniteSpecialAbility.cpp" />
     <ClCompile Include="src\game\features\self\Invis.cpp" />
     <ClCompile Include="src\game\features\self\KeepPlayerClean.cpp" />
     <ClCompile Include="src\game\features\self\MeleeDamage.cpp" />
     <ClCompile Include="src\game\features\self\MobileRadio.cpp" />
+    <ClCompile Include="src\game\features\self\MpSpecialAbility.cpp" />
     <ClCompile Include="src\game\features\self\NoIdleKick.cpp" />
     <ClCompile Include="src\game\features\self\NoRagdoll.cpp" />
     <ClCompile Include="src\game\features\self\Noclip.cpp" />
@@ -544,6 +551,7 @@
     </ClCompile>
     <ClCompile Include="src\game\features\world\CopsDispatch.cpp" />
     <ClCompile Include="src\game\features\world\Delete.cpp" />
+    <ClCompile Include="src\game\features\world\EnableCreatorDevMode.cpp" />
     <ClCompile Include="src\game\features\world\IPLManager.cpp" />
     <ClCompile Include="src\game\features\world\Kill.cpp">
       <ObjectFileName>$(IntDir)\Kill1.obj</ObjectFileName>
@@ -567,6 +575,7 @@
     <ClCompile Include="src\game\frontend\items\ColorCommandItem.cpp" />
     <ClCompile Include="src\game\frontend\items\CommandItem.cpp" />
     <ClCompile Include="src\game\frontend\items\ConditionalItem.cpp" />
+    <ClCompile Include="src\game\frontend\items\DrawHotkey.cpp" />
     <ClCompile Include="src\game\frontend\items\FloatCommandItem.cpp" />
     <ClCompile Include="src\game\frontend\items\Group.cpp" />
     <ClCompile Include="src\game\frontend\items\ImGuiItem.cpp" />

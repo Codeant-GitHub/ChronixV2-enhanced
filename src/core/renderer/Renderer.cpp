@@ -18,7 +18,11 @@
 
 namespace YimMenu
 {
-	Renderer::Renderer()
+	Renderer::Renderer() :
+	    m_Initialized(false),
+	    m_Resizing(false),
+	    m_FontsUpdated(false),
+		m_SafeToRender(false)
 	{
 	}
 
@@ -241,6 +245,9 @@ namespace YimMenu
 
 	void Renderer::DX12OnPresentImpl()
 	{
+		if (!m_SafeToRender)
+			return;
+
 		Renderer::DX12NewFrame();
 		for (const auto& callback : m_RendererCallBacks | std::views::values)
 			callback();
@@ -345,6 +352,13 @@ namespace YimMenu
 
 	void Renderer::DX12NewFrame()
 	{
+		if (GetInstance().m_FontsUpdated)
+		{
+			DX12PreResize();
+			DX12PostResize();
+			GetInstance().m_FontsUpdated = false;
+		}
+
 		ImGui_ImplDX12_NewFrame();
 		ImGui_ImplWin32_NewFrame();
 		ImGui::NewFrame();

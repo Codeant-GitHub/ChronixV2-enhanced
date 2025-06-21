@@ -314,7 +314,7 @@ namespace YimMenu
 			NetworkTime = ptr.Add(2).Rip().As<std::uint32_t*>();
 		});
 
-		constexpr auto gameTimerPtrn = Pattern<"3B 2D ? ? ? ? 76">("GameTimer");
+		constexpr auto gameTimerPtrn = Pattern<"3B 2D ? ? ? ? 76 ? 89 D9">("GameTimer");
 		scanner.Add(gameTimerPtrn, [this](PointerCalculator ptr) {
 			GameTimer = ptr.Add(2).Rip().As<std::uint32_t*>();
 		});
@@ -414,6 +414,11 @@ namespace YimMenu
 		constexpr auto getAnticheatInitializedHash2Ptrn = Pattern<"89 9E E8 00 00 00 89 C2 E8 ? ? ? ? 69">("GetAnticheatInitializedHash2");
 		scanner.Add(getAnticheatInitializedHash2Ptrn, [this](PointerCalculator ptr) {
 			GetAnticheatInitializedHash2 = ptr.Add(0x9).Rip().As<PVOID>();
+		});
+
+		constexpr auto abilityBarPatchPtrn = Pattern<"75 39 48 85 F6 74 1A 48 89 F1 E8">("AbilityBarPatch");
+		scanner.Add(abilityBarPatchPtrn, [this](PointerCalculator ptr) {
+			AbilityBarPatch = BytePatches::Add(ptr.As<std::uint16_t*>(), 0x9090);
 		});
 
 		if (!scanner.Scan())

@@ -526,6 +526,9 @@
     <ClInclude Include="src\game\frontend\fonts\Fonts.hpp">
       <Filter>game\frontend\fonts</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\frontend\items\DrawHotkey.hpp">
+      <Filter>game\frontend\items</Filter>
+    </ClInclude>
     <ClInclude Include="src\game\frontend\items\Items.hpp">
       <Filter>game\frontend\items</Filter>
     </ClInclude>
@@ -1579,6 +1582,9 @@
     <ClCompile Include="src\game\features\self\InfiniteParachutes.cpp">
       <Filter>game\features\self</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\features\self\InfiniteSpecialAbility.cpp">
+      <Filter>game\features\self</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\features\self\Invis.cpp">
       <Filter>game\features\self</Filter>
     </ClCompile>
@@ -1589,6 +1595,9 @@
       <Filter>game\features\self</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\self\MobileRadio.cpp">
+      <Filter>game\features\self</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\features\self\MpSpecialAbility.cpp">
       <Filter>game\features\self</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\self\NoIdleKick.cpp">
@@ -1705,6 +1714,9 @@
     <ClCompile Include="src\game\features\world\Delete.cpp">
       <Filter>game\features\world</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\features\world\EnableCreatorDevMode.cpp">
+      <Filter>game\features\world</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\features\world\IPLManager.cpp">
       <Filter>game\features\world</Filter>
     </ClCompile>
@@ -1766,6 +1778,9 @@
       <Filter>game\frontend\items</Filter>
     </ClCompile>
     <ClCompile Include="src\game\frontend\items\ConditionalItem.cpp">
+      <Filter>game\frontend\items</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\frontend\items\DrawHotkey.cpp">
       <Filter>game\frontend\items</Filter>
     </ClCompile>
     <ClCompile Include="src\game\frontend\items\FloatCommandItem.cpp">
