@@ -87,6 +87,7 @@
     <ClInclude Include="src\core\frontend\manager\Submenu.hpp" />
     <ClInclude Include="src\core\frontend\manager\UIItem.hpp" />
     <ClInclude Include="src\core\frontend\manager\UIManager.hpp" />
+    <ClInclude Include="src\core\frontend\manager\styles\Themes.hpp" />
     <ClInclude Include="src\core\frontend\widgets\imgui_bitfield.hpp" />
     <ClInclude Include="src\core\frontend\widgets\imgui_colors.h" />
     <ClInclude Include="src\core\frontend\widgets\toggle\imgui_offset_rect.hpp" />
@@ -123,6 +124,7 @@
     <ClInclude Include="src\core\util\StrToHex.hpp" />
     <ClInclude Include="src\core\util\Strings.hpp" />
     <ClInclude Include="src\game\backend\AnticheatBypass.hpp" />
+    <ClInclude Include="src\game\backend\CustomMatchmaking.hpp" />
     <ClInclude Include="src\game\backend\NativeHooks.hpp" />
     <ClInclude Include="src\game\backend\NodeHooks.hpp" />
     <ClInclude Include="src\game\backend\PlayerData.hpp" />
@@ -225,6 +227,8 @@
     <ClInclude Include="src\types\netshop\netCatalogBaseItem.hpp" />
     <ClInclude Include="src\types\network\CNetGamePlayer.hpp" />
     <ClInclude Include="src\types\network\CNetworkPlayerMgr.hpp" />
+    <ClInclude Include="src\types\network\MatchmakingAttributes.hpp" />
+    <ClInclude Include="src\types\network\MatchmakingId.hpp" />
     <ClInclude Include="src\types\network\netAddress.hpp" />
     <ClInclude Include="src\types\network\netArrayHandler.hpp" />
     <ClInclude Include="src\types\network\netArrayHandlerBase.hpp" />
@@ -242,6 +246,8 @@
     <ClInclude Include="src\types\network\rlGamerInfo.hpp" />
     <ClInclude Include="src\types\network\rlGamerInfoBase.hpp" />
     <ClInclude Include="src\types\network\rlSessionByGamerHandleTaskResult.hpp" />
+    <ClInclude Include="src\types\network\rlSessionConfig.hpp" />
+    <ClInclude Include="src\types\network\rlSessionDetail.hpp" />
     <ClInclude Include="src\types\network\rlSessionInfo.hpp" />
     <ClInclude Include="src\types\network\rlTaskStatus.hpp" />
     <ClInclude Include="src\types\network\sync\CProjectBaseSyncDataNode.hpp" />
@@ -416,6 +422,9 @@
     <ClCompile Include="src\core\frontend\manager\Category.cpp" />
     <ClCompile Include="src\core\frontend\manager\Submenu.cpp" />
     <ClCompile Include="src\core\frontend\manager\UIManager.cpp" />
+    <ClCompile Include="src\core\frontend\manager\styles\Classic\Classic.cpp" />
+    <ClCompile Include="src\core\frontend\manager\styles\Modern\Modern.cpp" />
+    <ClCompile Include="src\core\frontend\manager\styles\ModernVertical\ModernVertical.cpp" />
     <ClCompile Include="src\core\frontend\widgets\toggle\imgui_toggle.cpp" />
     <ClCompile Include="src\core\frontend\widgets\toggle\imgui_toggle_palette.cpp" />
     <ClCompile Include="src\core\frontend\widgets\toggle\imgui_toggle_presets.cpp" />
@@ -436,6 +445,7 @@
     <ClCompile Include="src\core\settings\IStateSerializer.cpp" />
     <ClCompile Include="src\core\settings\Settings.cpp" />
     <ClCompile Include="src\game\backend\AnticheatBypass.cpp" />
+    <ClCompile Include="src\game\backend\CustomMatchmaking.cpp" />
     <ClCompile Include="src\game\backend\NativeHooks.cpp" />
     <ClCompile Include="src\game\backend\NodeHooks.cpp" />
     <ClCompile Include="src\game\backend\Players.cpp" />
@@ -466,6 +476,8 @@
     <ClCompile Include="src\game\features\players\kick\NullFunctionKick.cpp" />
     <ClCompile Include="src\game\features\players\kick\ScriptHostKick.cpp" />
     <ClCompile Include="src\game\features\players\teleport\Bring.cpp" />
+    <ClCompile Include="src\game\features\players\teleport\SendToInterior.cpp" />
+    <ClCompile Include="src\game\features\players\teleport\SendToProperty.cpp" />
     <ClCompile Include="src\game\features\players\teleport\TeleportToCoord.cpp" />
     <ClCompile Include="src\game\features\players\teleport\TeleportToPlayer.cpp" />
     <ClCompile Include="src\game\features\players\toxic\CeoKick.cpp" />
@@ -674,6 +686,10 @@
     <ClCompile Include="src\game\hooks\GUI\Window.cpp" />
     <ClCompile Include="src\game\hooks\Info\AssignPhysicalIndex.cpp" />
     <ClCompile Include="src\game\hooks\Info\NetworkPlayerManagerShutdown.cpp" />
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingAdvertise.cpp" />
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingSessionDetailSendResponse.cpp" />
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingUnadvertise.cpp" />
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingUpdate.cpp" />
     <ClCompile Include="src\game\hooks\Misc\AssistedAimShouldReleaseEntity.cpp" />
     <ClCompile Include="src\game\hooks\Network\HandleNetGameEvent.cpp" />
     <ClCompile Include="src\game\hooks\Network\HandleScriptedGameEvent.cpp" />

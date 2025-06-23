@@ -19,6 +19,18 @@
     <Filter Include="core\frontend\manager">
       <UniqueIdentifier>{87550B5B-F3C1-C655-BCB5-5EB328E1E8BD}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\frontend\manager\styles">
+      <UniqueIdentifier>{9AACBAC9-8667-AA75-2F1F-23C01BB9F405}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\frontend\manager\styles\Classic">
+      <UniqueIdentifier>{EB15201B-D7FC-E112-804D-48306C135B79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\frontend\manager\styles\Modern">
+      <UniqueIdentifier>{CECDBA8C-3A87-2537-C3E6-3F112F9FDBA6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\frontend\manager\styles\ModernVertical">
+      <UniqueIdentifier>{88AF8CD8-F414-205F-7DED-C137E95115CE}</UniqueIdentifier>
+    </Filter>
     <Filter Include="core\frontend\widgets">
       <UniqueIdentifier>{C348C96E-2FB5-8469-F8A8-1CC764D4A6D1}</UniqueIdentifier>
     </Filter>
@@ -150,6 +162,9 @@
     </Filter>
     <Filter Include="game\hooks\Info">
       <UniqueIdentifier>{6DABD828-D936-46ED-E247-C9E14E52A2ED}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="game\hooks\Matchmaking">
+      <UniqueIdentifier>{4556B6CE-3150-DF20-1ABD-75310656458D}</UniqueIdentifier>
     </Filter>
     <Filter Include="game\hooks\Misc">
       <UniqueIdentifier>{4DC9DA28-B954-48ED-C265-CBE12E70A4ED}</UniqueIdentifier>
@@ -346,6 +361,9 @@
     <ClInclude Include="src\core\frontend\manager\UIManager.hpp">
       <Filter>core\frontend\manager</Filter>
     </ClInclude>
+    <ClInclude Include="src\core\frontend\manager\styles\Themes.hpp">
+      <Filter>core\frontend\manager\styles</Filter>
+    </ClInclude>
     <ClInclude Include="src\core\frontend\widgets\imgui_bitfield.hpp">
       <Filter>core\frontend\widgets</Filter>
     </ClInclude>
@@ -452,6 +470,9 @@
       <Filter>core\util</Filter>
     </ClInclude>
     <ClInclude Include="src\game\backend\AnticheatBypass.hpp">
+      <Filter>game\backend</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\backend\CustomMatchmaking.hpp">
       <Filter>game\backend</Filter>
     </ClInclude>
     <ClInclude Include="src\game\backend\NativeHooks.hpp">
@@ -760,6 +781,12 @@
     <ClInclude Include="src\types\network\CNetworkPlayerMgr.hpp">
       <Filter>types\network</Filter>
     </ClInclude>
+    <ClInclude Include="src\types\network\MatchmakingAttributes.hpp">
+      <Filter>types\network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\types\network\MatchmakingId.hpp">
+      <Filter>types\network</Filter>
+    </ClInclude>
     <ClInclude Include="src\types\network\netAddress.hpp">
       <Filter>types\network</Filter>
     </ClInclude>
@@ -809,6 +836,12 @@
       <Filter>types\network</Filter>
     </ClInclude>
     <ClInclude Include="src\types\network\rlSessionByGamerHandleTaskResult.hpp">
+      <Filter>types\network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\types\network\rlSessionConfig.hpp">
+      <Filter>types\network</Filter>
+    </ClInclude>
+    <ClInclude Include="src\types\network\rlSessionDetail.hpp">
       <Filter>types\network</Filter>
     </ClInclude>
     <ClInclude Include="src\types\network\rlSessionInfo.hpp">
@@ -1321,6 +1354,15 @@
     <ClCompile Include="src\core\frontend\manager\UIManager.cpp">
       <Filter>core\frontend\manager</Filter>
     </ClCompile>
+    <ClCompile Include="src\core\frontend\manager\styles\Classic\Classic.cpp">
+      <Filter>core\frontend\manager\styles\Classic</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\frontend\manager\styles\Modern\Modern.cpp">
+      <Filter>core\frontend\manager\styles\Modern</Filter>
+    </ClCompile>
+    <ClCompile Include="src\core\frontend\manager\styles\ModernVertical\ModernVertical.cpp">
+      <Filter>core\frontend\manager\styles\ModernVertical</Filter>
+    </ClCompile>
     <ClCompile Include="src\core\frontend\widgets\toggle\imgui_toggle.cpp">
       <Filter>core\frontend\widgets\toggle</Filter>
     </ClCompile>
@@ -1379,6 +1421,9 @@
       <Filter>core\settings</Filter>
     </ClCompile>
     <ClCompile Include="src\game\backend\AnticheatBypass.cpp">
+      <Filter>game\backend</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\backend\CustomMatchmaking.cpp">
       <Filter>game\backend</Filter>
     </ClCompile>
     <ClCompile Include="src\game\backend\NativeHooks.cpp">
@@ -1469,6 +1514,12 @@
       <Filter>game\features\players\kick</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\players\teleport\Bring.cpp">
+      <Filter>game\features\players\teleport</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\features\players\teleport\SendToInterior.cpp">
+      <Filter>game\features\players\teleport</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\features\players\teleport\SendToProperty.cpp">
       <Filter>game\features\players\teleport</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\players\teleport\TeleportToCoord.cpp">
@@ -1998,6 +2049,18 @@
     </ClCompile>
     <ClCompile Include="src\game\hooks\Info\NetworkPlayerManagerShutdown.cpp">
       <Filter>game\hooks\Info</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingAdvertise.cpp">
+      <Filter>game\hooks\Matchmaking</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingSessionDetailSendResponse.cpp">
+      <Filter>game\hooks\Matchmaking</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingUnadvertise.cpp">
+      <Filter>game\hooks\Matchmaking</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\hooks\Matchmaking\MatchmakingUpdate.cpp">
+      <Filter>game\hooks\Matchmaking</Filter>
     </ClCompile>
     <ClCompile Include="src\game\hooks\Misc\AssistedAimShouldReleaseEntity.cpp">
       <Filter>game\hooks\Misc</Filter>
