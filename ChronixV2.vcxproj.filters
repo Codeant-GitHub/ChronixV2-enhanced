@@ -142,6 +142,9 @@
     <Filter Include="game\frontend\submenus\Vehicle">
       <UniqueIdentifier>{7E1FFC98-6A45-C6FF-538B-4BCB3F50EBCB}</UniqueIdentifier>
     </Filter>
+    <Filter Include="game\frontend\submenus\World">
+      <UniqueIdentifier>{26A1930A-125C-83B6-BB13-FC00A7ADCD46}</UniqueIdentifier>
+    </Filter>
     <Filter Include="game\gta">
       <UniqueIdentifier>{6A7882BA-5645-DDC5-7F5E-CB6D6B8A1254}</UniqueIdentifier>
     </Filter>
@@ -652,6 +655,9 @@
     <ClInclude Include="src\game\frontend\submenus\World.hpp">
       <Filter>game\frontend\submenus</Filter>
     </ClInclude>
+    <ClInclude Include="src\game\frontend\submenus\World\SpawnPed.hpp">
+      <Filter>game\frontend\submenus\World</Filter>
+    </ClInclude>
     <ClInclude Include="src\game\gta\Entity.hpp">
       <Filter>game\gta</Filter>
     </ClInclude>
@@ -710,6 +716,9 @@
       <Filter>game\gta\data</Filter>
     </ClInclude>
     <ClInclude Include="src\game\gta\data\ModNames.hpp">
+      <Filter>game\gta\data</Filter>
+    </ClInclude>
+    <ClInclude Include="src\game\gta\data\PedModels.hpp">
       <Filter>game\gta\data</Filter>
     </ClInclude>
     <ClInclude Include="src\game\gta\data\RandomEvents.hpp">
@@ -1064,6 +1073,9 @@
       <Filter>types\pad</Filter>
     </ClInclude>
     <ClInclude Include="src\types\ped\CPedFactory.hpp">
+      <Filter>types\ped</Filter>
+    </ClInclude>
+    <ClInclude Include="src\types\ped\PedCombatAttribute.hpp">
       <Filter>types\ped</Filter>
     </ClInclude>
     <ClInclude Include="src\types\ped\PedConfigFlag.hpp">
@@ -1480,6 +1492,9 @@
     <ClCompile Include="src\game\features\network\ForceScriptHost.cpp">
       <Filter>game\features\network</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\features\network\ForceThunder.cpp">
+      <Filter>game\features\network</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\features\network\HarassPlayers.cpp">
       <Filter>game\features\network</Filter>
     </ClCompile>
@@ -1528,6 +1543,9 @@
     <ClCompile Include="src\game\features\players\teleport\TeleportToPlayer.cpp">
       <Filter>game\features\players\teleport</Filter>
     </ClCompile>
+    <ClCompile Include="src\game\features\players\toxic\Blackscreen.cpp">
+      <Filter>game\features\players\toxic</Filter>
+    </ClCompile>
     <ClCompile Include="src\game\features\players\toxic\CeoKick.cpp">
       <Filter>game\features\players\toxic</Filter>
     </ClCompile>
@@ -1559,9 +1577,6 @@
       <Filter>game\features\recovery</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\recovery\DailyActivities.cpp">
-      <Filter>game\features\recovery</Filter>
-    </ClCompile>
-    <ClCompile Include="src\game\features\recovery\ForceLaunchHeist.cpp">
       <Filter>game\features\recovery</Filter>
     </ClCompile>
     <ClCompile Include="src\game\features\recovery\FreeChangeAppearance.cpp">
@@ -1962,6 +1977,9 @@
     </ClCompile>
     <ClCompile Include="src\game\frontend\submenus\World.cpp">
       <Filter>game\frontend\submenus</Filter>
+    </ClCompile>
+    <ClCompile Include="src\game\frontend\submenus\World\SpawnPed.cpp">
+      <Filter>game\frontend\submenus\World</Filter>
     </ClCompile>
     <ClCompile Include="src\game\gta\Entity.cpp">
       <Filter>game\gta</Filter>

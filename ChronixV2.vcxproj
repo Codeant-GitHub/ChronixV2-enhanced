@@ -184,6 +184,7 @@
     <ClInclude Include="src\game\frontend\submenus\Vehicle\SpawnVehicle.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Vehicle\VehicleEditor.hpp" />
     <ClInclude Include="src\game\frontend\submenus\World.hpp" />
+    <ClInclude Include="src\game\frontend\submenus\World\SpawnPed.hpp" />
     <ClInclude Include="src\game\gta\Entity.hpp" />
     <ClInclude Include="src\game\gta\Natives.hpp" />
     <ClInclude Include="src\game\gta\Network.hpp" />
@@ -204,6 +205,7 @@
     <ClInclude Include="src\game\gta\VehicleModel.hpp" />
     <ClInclude Include="src\game\gta\data\IPL.hpp" />
     <ClInclude Include="src\game\gta\data\ModNames.hpp" />
+    <ClInclude Include="src\game\gta\data\PedModels.hpp" />
     <ClInclude Include="src\game\gta\data\RandomEvents.hpp" />
     <ClInclude Include="src\game\gta\data\ScriptNames.hpp" />
     <ClInclude Include="src\game\gta\data\StackSizes.hpp" />
@@ -322,6 +324,7 @@
     <ClInclude Include="src\types\network\sync\nodes\vehicle\CVehicleTaskDataNode.hpp" />
     <ClInclude Include="src\types\pad\ControllerInputs.hpp" />
     <ClInclude Include="src\types\ped\CPedFactory.hpp" />
+    <ClInclude Include="src\types\ped\PedCombatAttribute.hpp" />
     <ClInclude Include="src\types\ped\PedConfigFlag.hpp" />
     <ClInclude Include="src\types\rage\ObfVar.hpp" />
     <ClInclude Include="src\types\rage\PoolEncryption.hpp" />
@@ -464,6 +467,7 @@
     <ClCompile Include="src\game\features\network\DisableDeathBarriers.cpp" />
     <ClCompile Include="src\game\features\network\FastJoin.cpp" />
     <ClCompile Include="src\game\features\network\ForceScriptHost.cpp" />
+    <ClCompile Include="src\game\features\network\ForceThunder.cpp" />
     <ClCompile Include="src\game\features\network\HarassPlayers.cpp" />
     <ClCompile Include="src\game\features\network\JoinSession.cpp" />
     <ClCompile Include="src\game\features\network\PauseGame.cpp" />
@@ -480,6 +484,7 @@
     <ClCompile Include="src\game\features\players\teleport\SendToProperty.cpp" />
     <ClCompile Include="src\game\features\players\teleport\TeleportToCoord.cpp" />
     <ClCompile Include="src\game\features\players\teleport\TeleportToPlayer.cpp" />
+    <ClCompile Include="src\game\features\players\toxic\Blackscreen.cpp" />
     <ClCompile Include="src\game\features\players\toxic\CeoKick.cpp" />
     <ClCompile Include="src\game\features\players\toxic\Explode.cpp" />
     <ClCompile Include="src\game\features\players\toxic\Kill.cpp" />
@@ -491,7 +496,6 @@
     <ClCompile Include="src\game\features\recovery\Casino.cpp" />
     <ClCompile Include="src\game\features\recovery\ClaimSafeEarnings.cpp" />
     <ClCompile Include="src\game\features\recovery\DailyActivities.cpp" />
-    <ClCompile Include="src\game\features\recovery\ForceLaunchHeist.cpp" />
     <ClCompile Include="src\game\features\recovery\FreeChangeAppearance.cpp" />
     <ClCompile Include="src\game\features\recovery\Heist\ApartmentHeist.cpp" />
     <ClCompile Include="src\game\features\recovery\Heist\CayoPericoHeist.cpp" />
@@ -651,6 +655,7 @@
     <ClCompile Include="src\game\frontend\submenus\Vehicle\SpawnVehicle.cpp" />
     <ClCompile Include="src\game\frontend\submenus\Vehicle\VehicleEditor.cpp" />
     <ClCompile Include="src\game\frontend\submenus\World.cpp" />
+    <ClCompile Include="src\game\frontend\submenus\World\SpawnPed.cpp" />
     <ClCompile Include="src\game\gta\Entity.cpp" />
     <ClCompile Include="src\game\gta\Network.cpp">
       <ObjectFileName>$(IntDir)\Network1.obj</ObjectFileName>
