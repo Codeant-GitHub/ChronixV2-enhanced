@@ -116,6 +116,12 @@
     <ClInclude Include="src\core\memory\PatternScanner.hpp" />
     <ClInclude Include="src\core\memory\PointerCalculator.hpp" />
     <ClInclude Include="src\core\renderer\Renderer.hpp" />
+    <ClInclude Include="src\core\scripting\LatentFunction.hpp" />
+    <ClInclude Include="src\core\scripting\LuaLibrary.hpp" />
+    <ClInclude Include="src\core\scripting\LuaManager.hpp" />
+    <ClInclude Include="src\core\scripting\LuaResource.hpp" />
+    <ClInclude Include="src\core\scripting\LuaScript.hpp" />
+    <ClInclude Include="src\core\scripting\LuaUtils.hpp" />
     <ClInclude Include="src\core\settings\IStateSerializer.hpp" />
     <ClInclude Include="src\core\settings\Settings.hpp" />
     <ClInclude Include="src\core\util\Joaat.hpp" />
@@ -178,6 +184,7 @@
     <ClInclude Include="src\game\frontend\submenus\Self\OutfitEditor.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Self\Weapons.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Settings.hpp" />
+    <ClInclude Include="src\game\frontend\submenus\Settings\LuaScripts.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Teleport.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Vehicle.hpp" />
     <ClInclude Include="src\game\frontend\submenus\Vehicle\SavedVehicles.hpp" />
@@ -204,6 +211,7 @@
     <ClInclude Include="src\game\gta\Vehicle.hpp" />
     <ClInclude Include="src\game\gta\VehicleModel.hpp" />
     <ClInclude Include="src\game\gta\data\IPL.hpp" />
+    <ClInclude Include="src\game\gta\data\LauncherScripts.hpp" />
     <ClInclude Include="src\game\gta\data\ModNames.hpp" />
     <ClInclude Include="src\game\gta\data\PedModels.hpp" />
     <ClInclude Include="src\game\gta\data\RandomEvents.hpp" />
@@ -216,6 +224,8 @@
     <ClInclude Include="src\game\gta\invoker\Invoker.hpp" />
     <ClInclude Include="src\game\hooks\Hooks.hpp" />
     <ClInclude Include="src\game\pointers\Pointers.hpp" />
+    <ClInclude Include="src\game\scripting\libraries\Entity.hpp" />
+    <ClInclude Include="src\game\scripting\libraries\NativeDefs.hpp" />
     <ClInclude Include="src\types\anticheat\CAnticheatContext.hpp" />
     <ClInclude Include="src\types\battleye\CBattlEyePlayerModifyContext.hpp" />
     <ClInclude Include="src\types\battleye\CBattlEyePlayerModifyInterface.hpp" />
@@ -369,6 +379,7 @@
     <ClInclude Include="src\types\script\globals\GSBD_PropertyInstances.hpp" />
     <ClInclude Include="src\types\script\globals\GSBD_RandomEvents.hpp" />
     <ClInclude Include="src\types\script\globals\GlobalPlayerBD.hpp" />
+    <ClInclude Include="src\types\script\globals\LauncherServerData.hpp" />
     <ClInclude Include="src\types\script\globals\MPSV.hpp" />
     <ClInclude Include="src\types\script\globals\WeeklyChallenge.hpp" />
     <ClInclude Include="src\types\script\globals\g_AMC_playerBD.hpp" />
@@ -376,6 +387,7 @@
     <ClInclude Include="src\types\script\locals\BikeTimeTrialData.hpp" />
     <ClInclude Include="src\types\script\locals\FMRandomEvents.hpp" />
     <ClInclude Include="src\types\script\locals\HSWTimeTrialData.hpp" />
+    <ClInclude Include="src\types\script\locals\LauncherClientData.hpp" />
     <ClInclude Include="src\types\script\locals\RCBanditoTimeTrialData.hpp" />
     <ClInclude Include="src\types\script\locals\StandardTimeTrialData.hpp" />
     <ClInclude Include="src\types\script\locals\VehicleRewardData.hpp" />
@@ -445,6 +457,17 @@
     <ClCompile Include="src\core\memory\Pattern.cpp" />
     <ClCompile Include="src\core\memory\PatternScanner.cpp" />
     <ClCompile Include="src\core\renderer\Renderer.cpp" />
+    <ClCompile Include="src\core\scripting\LatentFunction.cpp" />
+    <ClCompile Include="src\core\scripting\LuaLibrary.cpp" />
+    <ClCompile Include="src\core\scripting\LuaManager.cpp" />
+    <ClCompile Include="src\core\scripting\LuaResource.cpp" />
+    <ClCompile Include="src\core\scripting\LuaScript.cpp" />
+    <ClCompile Include="src\core\scripting\libraries\Default.cpp" />
+    <ClCompile Include="src\core\scripting\libraries\Internal.cpp" />
+    <ClCompile Include="src\core\scripting\libraries\Logging.cpp" />
+    <ClCompile Include="src\core\scripting\libraries\Script.cpp" />
+    <ClCompile Include="src\core\scripting\libraries\Util.cpp" />
+    <ClCompile Include="src\core\scripting\libraries\Vector3.cpp" />
     <ClCompile Include="src\core\settings\IStateSerializer.cpp" />
     <ClCompile Include="src\core\settings\Settings.cpp" />
     <ClCompile Include="src\game\backend\AnticheatBypass.cpp" />
@@ -490,6 +513,8 @@
     <ClCompile Include="src\game\features\players\toxic\Kill.cpp" />
     <ClCompile Include="src\game\features\players\toxic\KillLoopExploit.cpp" />
     <ClCompile Include="src\game\features\players\troll\DeleteVehicle.cpp" />
+    <ClCompile Include="src\game\features\players\troll\SendGooch.cpp" />
+    <ClCompile Include="src\game\features\players\troll\SendPhantomCar.cpp" />
     <ClCompile Include="src\game\features\players\troll\SendSext.cpp" />
     <ClCompile Include="src\game\features\players\troll\SetBounty.cpp" />
     <ClCompile Include="src\game\features\recovery\AllowGenderChange.cpp" />
@@ -647,6 +672,7 @@
     <ClCompile Include="src\game\frontend\submenus\Settings.cpp">
       <ObjectFileName>$(IntDir)\Settings1.obj</ObjectFileName>
     </ClCompile>
+    <ClCompile Include="src\game\frontend\submenus\Settings\LuaScripts.cpp" />
     <ClCompile Include="src\game\frontend\submenus\Teleport.cpp" />
     <ClCompile Include="src\game\frontend\submenus\Vehicle.cpp" />
     <ClCompile Include="src\game\frontend\submenus\Vehicle\SavedVehicles.cpp">
@@ -708,6 +734,32 @@
     <ClCompile Include="src\game\hooks\Spoofing\WriteNodeData.cpp" />
     <ClCompile Include="src\game\hooks\Spoofing\WriteSyncTree.cpp" />
     <ClCompile Include="src\game\pointers\Pointers.cpp" />
+    <ClCompile Include="src\game\scripting\libraries\Entity.cpp">
+      <ObjectFileName>$(IntDir)\Entity1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\game\scripting\libraries\Invoker.cpp">
+      <ObjectFileName>$(IntDir)\Invoker1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\game\scripting\libraries\NativeDefs.cpp" />
+    <ClCompile Include="src\game\scripting\libraries\Natives.cpp" />
+    <ClCompile Include="src\game\scripting\libraries\Ped.cpp">
+      <ObjectFileName>$(IntDir)\Ped1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\game\scripting\libraries\ScriptGlobal.cpp">
+      <ObjectFileName>$(IntDir)\ScriptGlobal1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\game\scripting\libraries\Stats.cpp">
+      <ObjectFileName>$(IntDir)\Stats1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\game\scripting\libraries\Transactions.cpp">
+      <ObjectFileName>$(IntDir)\Transactions1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\game\scripting\libraries\Tunables.cpp">
+      <ObjectFileName>$(IntDir)\Tunables1.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="src\game\scripting\libraries\Vehicle.cpp">
+      <ObjectFileName>$(IntDir)\Vehicle2.obj</ObjectFileName>
+    </ClCompile>
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\types\network\netGameEvent.cpp" />
     <ClCompile Include="src\types\network\rlGamerHandle.cpp" />
