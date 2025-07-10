@@ -100,6 +100,7 @@ namespace YimMenu
 		}
 
 		LOG(INFO) << "Unloading";
+		AnticheatBypass::ShutdownImpl();
 		NativeHooks::Destroy();
 		FiberPool::Destroy();
 		ScriptMgr::Destroy();
