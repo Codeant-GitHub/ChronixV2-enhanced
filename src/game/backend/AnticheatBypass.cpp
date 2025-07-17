@@ -20,8 +20,6 @@ using FnBattlEyeBypass = bool (*)();
 
 namespace YimMenu
 {
-	static std::vector<void*> s_PatchedVTables;
-
 	static bool CheckForFSL()
 	{
 		int num_versions = 0;
@@ -43,6 +41,7 @@ namespace YimMenu
 
 	static void NopGameSkeletonElement(rage::gameSkeletonUpdateElement* element)
 	{
+		// TODO: small memory leak
 		// Hey rockstar if you keep up with this I'll make you integrity check everything until you can't anymore, please grow a brain and realize that this is futile
 		// and kills performance if you're the host
 		auto vtable = *reinterpret_cast<void***>(element);
@@ -53,8 +52,6 @@ namespace YimMenu
 		memcpy(new_vtable, vtable, sizeof(void*) * 3);
 		new_vtable[1] = Pointers.Nullsub;
 		*reinterpret_cast<void***>(element) = new_vtable;
-
-		s_PatchedVTables.push_back(new_vtable);
 	}
 
 	static void DefuseSigscanner()
@@ -173,14 +170,5 @@ namespace YimMenu
 			}
 			ScriptMgr::Yield();
 		}
-	}
-
-	void AnticheatBypass::ShutdownImpl()
-	{
-		for (auto vtable : s_PatchedVTables)
-		{
-			delete[] vtable;
-		}
-		s_PatchedVTables.clear();
 	}
 }
